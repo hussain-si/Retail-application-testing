@@ -9,6 +9,7 @@ export class loginPage{
     async navigateToURL(url : string){
         await this.page.goto(url)
     }
+    
 
     async loginWithValidCred(username : string, password :string){
 
