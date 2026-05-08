@@ -21,4 +21,25 @@ export class loginPage{
         await this.page.getByRole('button',{name:"Login to QKart"}).click();
         
     }
+
+    async clickLoginButton(){
+        await this.page.getByRole("button", {name:'Login'}).click();
+    }
+
+    async enterUsername(username: string){
+        await this.page.locator("#username").fill(username);
+    }
+
+    async enterPassword(password: string){
+        await this.page.locator("#password").fill(password);
+    }
+
+    async clickLoginToQKartButton(){
+        await this.page.getByRole('button',{name:"Login to QKart"}).click();
+    }
+
+    async getErrorMessage(): Promise<string> {
+        const errorElement = await this.page.getByText(/required field|does not exist|incorrect/i);
+        return await errorElement.textContent() || "";
+    }
 }
